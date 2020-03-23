@@ -1,29 +1,37 @@
 {
-  "name": "ThreeFourOneTwo",
+  "name": "shackleton",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^3.5.1",
-    "express": "^4.16.3",
-    "http": "0.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
-    "three": "^0.92.0",
-    "three-orbitcontrols": "^2.0.0",
-    "uuid": "^3.2.1",
-    "ws": "^5.1.1"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0",
+    "three": "^0.114.0",
+    "three-orbit-controls": "^82.1.0",
+    "uuidv4": "^6.0.6"
   },
-  "engines": {
-    "node": "6.2.0"
-  },
-  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "concurrently \"react-scripts start\" \"node server.js\"",
-    "server": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

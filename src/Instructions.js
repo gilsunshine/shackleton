@@ -16,9 +16,7 @@ class Instructions extends React.Component{
   render(){
     return(
       <div onClick={this.hideInstructions}>
-        {this.state.show ? <div style={divStyle}> <strong style={textStyle}>Welcome to ThreeFourOneTwo</strong>
-        <p style={textStyle}>See that blue dot? That's you. Any red dots you might see are other users.</p>
-        <p style={textStyle}>Press W, A, S, and D keys to move your dot in the x and y axes. Press Z and X to move up and down in the z axis.</p>
+        {this.state.show ? <div style={divStyle}> <strong style={textStyle}>Welcome to Shackleton's Hut</strong>
         <p style={textStyle}>Click and drag to rotate your view. Click on the instructions to hide them.</p> </div>  : <div style={instructionDivStyle}><strong style={instructionTextStyle}>Instructions</strong></div>}
       </div>
     )
