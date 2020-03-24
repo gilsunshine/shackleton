@@ -1,9 +1,10 @@
 import * as THREE from 'three';
-import OrbitControls from 'three-orbitcontrols'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import uuidv4 from 'uuid/v4'
-
+import React from 'react'
 
 export default canvas => {
+
 
   var scene, renderer, camera;
   var cube;
@@ -13,6 +14,8 @@ export default canvas => {
   let ticking = false;
   let theta = 0;
   let camZ = 0;
+  let rot = true;
+
 //
   init();
   render();
@@ -40,58 +43,33 @@ export default canvas => {
       scene.add (cube);
 
       camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.01, 1000 );
-			camera.position.z = 1000;
 
-			controls = new OrbitControls( camera, renderer.domElement );
-			controls.enableDamping = true;
-			controls.dampingFactor = 0.2;
-      controls.minPolarAngle = Math.PI/2; // radians
-	    controls.maxPolarAngle = Math.PI/2; // radians
-      controls.enablePan = false;
-      controls.zoomSpeed = 4;
+			// controls = new OrbitControls( camera, renderer.domElement );
+			// controls.enableDamping = true;
+			// controls.dampingFactor = 0.5;
+      // controls.minPolarAngle = Math.PI/2; // radians
+	    // controls.maxPolarAngle = Math.PI/2; // radians
+      // controls.enablePan = false;
+      // controls.enableRotate = false;
+      // controls.dollyEnabled = true;
       // controls.enableZoom = false;
-      controls.enableRotate = false;
-      // controls.enableKeys = true;
-
-      // function doSomething(scroll_pos) {
-      //   console.log("scroll pos: " + scroll_pos);
-      //     console.log("last known scroll pos: " + prev_scroll);
-      //   if (scroll_pos > prev_scroll){
-      //     camera.position.z += 100;
-      //     console.log("greater");
-      //   } else if (scroll_pos < prev_scroll){
-      //     camera.position.z -= 100;
-      //     console.log("les");
-      //   }
-      //   prev_scroll = scroll_pos;
-      // }
-      //
-      // window.addEventListener('scroll', function(e) {
-      //   last_known_scroll_position = window.scrollY;
-      //
-      //   if (!ticking) {
-      //     window.requestAnimationFrame(function() {
-      //       doSomething(last_known_scroll_position);
-      //       ticking = false;
-      //     });
-      //
-      //     ticking = true;
-      //   }
-      // });
 
       document.addEventListener("keydown", onDocumentKeyDown, false)
      function onDocumentKeyDown(event) {
        let keyCode = event.which
        if (keyCode === 38 ) {
-         camZ += 100;
+         camera.position.z -= 10
        } else if (keyCode === 40) {
-         camZ -=100;
+         camera.position.z += 10
        }
        else if (keyCode === 39) {
+         console.log(camera.rotation.y)
          theta += Math.PI / 8;
+         camera.rotation.y = 15 * Math.cos( theta );
        }
        else if (keyCode === 37) {
          theta -= Math.PI / 8;
+         camera.rotation.y = 15 * Math.cos( theta );
        }
      }
 
@@ -106,13 +84,9 @@ export default canvas => {
 
   }
 
-
   function render()
   {
-    camera.position.x = 15 * Math.cos( theta );
-    camera.position.z = 15 * Math.sin( theta ) + camZ;
     requestAnimationFrame ( render );
-    controls.update();
     renderer.render (scene, camera);
   }
 
