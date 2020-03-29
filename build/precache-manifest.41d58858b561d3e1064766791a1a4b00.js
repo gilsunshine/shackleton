@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7b080de3c4d22b34629d9d217c162088",
+    "revision": "22e6ce2d52a7d1f4b044a426e6a659e8",
     "url": "/shackleton/index.html"
   },
   {
-    "revision": "b48d61b042029a6300ab",
+    "revision": "bc5f8df00aef707a0302",
     "url": "/shackleton/static/css/main.702b43ae.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/shackleton/static/js/2.498ea865.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b48d61b042029a6300ab",
-    "url": "/shackleton/static/js/main.06c50ac9.chunk.js"
+    "revision": "bc5f8df00aef707a0302",
+    "url": "/shackleton/static/js/main.54071c2a.chunk.js"
   },
   {
     "revision": "f72458e1bb89bc304eef",

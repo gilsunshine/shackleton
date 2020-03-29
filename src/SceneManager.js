@@ -1,15 +1,14 @@
 import * as THREE from 'three';
-import React from 'react'
+import TWEEN from '@tweenjs/tween.js'
 
 export default canvas => {
 
 
   var scene, renderer, camera;
   var cube;
-  let theta = 0;
   let rot = true;
-  let curPos = 0;
   let zoomLevel = 0;
+  let zoomSpeed = 20;
 
 //
   init();
@@ -38,13 +37,13 @@ export default canvas => {
       cube.position.set (scene.position.x, scene.position.y, -200);
       scene.add (cube);
 
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.01, 1000 );
+      camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.01, 1000 );
 
       document.addEventListener("keydown", onDocumentKeyDown, false)
        function onDocumentKeyDown(event) {
          let keyCode = event.which
          if (keyCode === 87) {
-           camera.translateZ(-10)
+           camera.translateZ(-zoomSpeed)
            zoomLevel += 1;
            if (zoomLevel === 0){
              rot = true;
@@ -53,7 +52,7 @@ export default canvas => {
            }
          } else if (keyCode === 83) {
            if (zoomLevel > 0){
-             camera.translateZ(10)
+             camera.translateZ(zoomSpeed)
              zoomLevel -=  1;
            }
            if (zoomLevel === 0){
@@ -80,10 +79,48 @@ export default canvas => {
       polarGrid.position.set(0, -10, 0);
       scene.add( polarGrid );
 
+      document.addEventListener("click", returnOrigin);
+
+      function returnOrigin() {
+        camera.translateZ(zoomLevel * zoomSpeed)
+        zoomLevel = 0;
+        rot = true;
+      }
+
+      //TWEEN
+
+      // let posX;
+      // let posY;
+      // let posZ;
+      //
+      // var from = {
+      //   x : camera.position.x,
+      //   y : camera.position.y,
+      //   z : camera.position.z
+      // };
+      //
+      // var to = {
+      //   x : posX,
+      //   y : posY,
+      //   z : posZ
+      // };
+      // var tween = new TWEEN.Tween(from)
+      // .to(to,600)
+      // .easing(TWEEN.Easing.Linear.None)
+      // .onUpdate(function () {
+      //   camera.position.set(this.x, this.y, this.z);
+      //   // camera.lookAt(new THREE.Vector3(0,0,0));
+      // })
+      // // .onComplete(function () {
+      // //   camera.lookAt(new THREE.Vector3(0,0,0));
+      // // })
+      // .start();
+
   }
 
   function render()
   {
+    TWEEN.update();
     requestAnimationFrame ( render );
     renderer.render (scene, camera);
   }

@@ -17,7 +17,9 @@ class Instructions extends React.Component{
     return(
       <div onClick={this.hideInstructions}>
         {this.state.show ? <div style={divStyle}> <strong style={textStyle}>Welcome to Shackleton's Hut</strong>
-        <p style={textStyle}>Use arrow keys to rotate view and to zoom. Click on the instructions to hide them.</p> </div>  : <div style={instructionDivStyle}><strong style={instructionTextStyle}>Instructions</strong></div>}
+        <p style={textStyle}>Use W, A, S and D keys to rotate view and to zoom.</p><div></div>
+        <p style={textStyle}>Click on the screen to return to origin.</p>
+        <p style={textStyle}>Click on the instructions to hide them.</p> </div>  : <div style={instructionDivStyle}><strong style={instructionTextStyle}>Instructions</strong></div>}
       </div>
     )
   }
