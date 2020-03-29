@@ -5,19 +5,36 @@ export default canvas => {
 
 
   var scene, renderer, camera;
-  var cube;
   let rot = true;
   let zoomLevel = 0;
   let zoomSpeed = 20;
+  let materials = [[],[],[],[]];
 
 //
   init();
   render();
 
+  function rotateAboutPoint(obj, point, axis, theta, pointIsWorld){
+    pointIsWorld = (pointIsWorld === undefined)? false : pointIsWorld;
+
+    if(pointIsWorld){
+        obj.parent.localToWorld(obj.position); // compensate for world coordinate
+    }
+
+    obj.position.sub(point); // remove the offset
+    obj.position.applyAxisAngle(axis, theta); // rotate the POSITION
+    obj.position.add(point); // re-add the offset
+
+    if(pointIsWorld){
+        obj.parent.worldToLocal(obj.position); // undo world coordinates compensation
+    }
+
+    obj.rotateOnAxis(axis, theta); // rotate the OBJECT
+}
+
   function init()
   {
       renderer = new THREE.WebGLRenderer( {canvas:canvas, antialias:true} );
-
 
       renderer.setSize( window.innerWidth, window.innerHeight );
       window.addEventListener('resize', ()=>{
@@ -30,12 +47,19 @@ export default canvas => {
 
       scene = new THREE.Scene();
 
-      var cubeGeometry = new THREE.BoxGeometry (10,10,10);
-      var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
-      cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
+      let origin = new THREE.Vector3(0,0,0);
+      let originAxis = new THREE.Vector3(0,1,0);
 
-      cube.position.set (scene.position.x, scene.position.y, -200);
-      scene.add (cube);
+      for (let i = 0; i < materials.length; i++){
+        var texture = new THREE.TextureLoader().load( 'materials/00/00_00.jpg' );
+        let material = new THREE.MeshBasicMaterial( { map: texture } );
+        var geometry = new THREE.PlaneGeometry( 30, 5, 32 );
+        var plane = new THREE.Mesh( geometry, material );
+        plane.position.set (scene.position.x, scene.position.y, -220);
+        scene.add( plane );
+        rotateAboutPoint(plane, origin, originAxis, (i+1) * Math.PI / 8, true);
+      }
+
 
       camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.01, 1000 );
 
