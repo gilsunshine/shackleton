@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/shackleton/static/css/main.702b43ae.chunk.css",
-    "main.js": "/shackleton/static/js/main.2e8fff4c.chunk.js",
-    "main.js.map": "/shackleton/static/js/main.2e8fff4c.chunk.js.map",
+    "main.js": "/shackleton/static/js/main.d53d7a1f.chunk.js",
+    "main.js.map": "/shackleton/static/js/main.d53d7a1f.chunk.js.map",
     "runtime-main.js": "/shackleton/static/js/runtime-main.91970149.js",
     "runtime-main.js.map": "/shackleton/static/js/runtime-main.91970149.js.map",
-    "static/js/2.1fb56776.chunk.js": "/shackleton/static/js/2.1fb56776.chunk.js",
-    "static/js/2.1fb56776.chunk.js.map": "/shackleton/static/js/2.1fb56776.chunk.js.map",
+    "static/js/2.fb2914fd.chunk.js": "/shackleton/static/js/2.fb2914fd.chunk.js",
+    "static/js/2.fb2914fd.chunk.js.map": "/shackleton/static/js/2.fb2914fd.chunk.js.map",
     "index.html": "/shackleton/index.html",
-    "precache-manifest.c897ac1aecfeffe1fcdee3238a04b143.js": "/shackleton/precache-manifest.c897ac1aecfeffe1fcdee3238a04b143.js",
+    "precache-manifest.a9eed38e48249a646b70ed9775d73bca.js": "/shackleton/precache-manifest.a9eed38e48249a646b70ed9775d73bca.js",
     "service-worker.js": "/shackleton/service-worker.js",
     "static/css/main.702b43ae.chunk.css.map": "/shackleton/static/css/main.702b43ae.chunk.css.map",
-    "static/js/2.1fb56776.chunk.js.LICENSE.txt": "/shackleton/static/js/2.1fb56776.chunk.js.LICENSE.txt"
+    "static/js/2.fb2914fd.chunk.js.LICENSE.txt": "/shackleton/static/js/2.fb2914fd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.91970149.js",
-    "static/js/2.1fb56776.chunk.js",
+    "static/js/2.fb2914fd.chunk.js",
     "static/css/main.702b43ae.chunk.css",
-    "static/js/main.2e8fff4c.chunk.js"
+    "static/js/main.d53d7a1f.chunk.js"
   ]
 }
